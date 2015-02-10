@@ -1,0 +1,42 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.wrap{
+	width: 550px;
+	height: 550px;
+	margin: 0 auto;
+	padding-top: 100px;
+	position: relative;
+}
+.time{
+	width: 450px;
+	min-height: 100px;
+	background: #f5f5f5;
+	border: 1px solid #a5a5a5;
+	border-radius: 4px;
+	text-align: center;
+	margin-bottom: 35px;
+	padding: 50px;
+}
+.time__item{
+	display: block;
+	font-size: 80px;
+	font: serif;
+	color: #151515;
+}
+.buttons{
+	width: 450px;
+	padding: 0 50px;
+}
+.buttons__item1{
+	float: left;
+	width: 150px;
+	height: 35px;
+	
+}
+.buttons__item2{
+	float: right;
+	width: 150px;
+	height: 35px;	
+}

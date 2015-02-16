@@ -7,12 +7,11 @@ function Timer (button_el, display_el) {
         fullT = 'fullTime',
         dateT = 'date',
         showNow = fullT, // For start with short time
-        timerId = 1;
+        timerId = 1,
+        countLeftClick = 0,
+        countRightClick = 0;
 
-    this.countLeftClick = 0;
-    this.countRightClick = 0;
-
-    this.setListener = function () {
+    this.setListeners = function () {
         button_el.addEventListener('contextmenu', this.triggerTimer('right'), false);
         button_el.addEventListener('click', this.triggerTimer('left'), false);
     };
@@ -24,7 +23,7 @@ function Timer (button_el, display_el) {
     this.triggerTimer = function (buttonPressed) {
         return function () {
             if (buttonPressed === 'left') {
-                timerThis.countLeftClick++;
+                countLeftClick++;
                 if (showNow === fullT || showNow === dateT) {
                     showNow = shortT;
                     clearInterval(timerId);
@@ -39,7 +38,7 @@ function Timer (button_el, display_el) {
                     }, 500);
                 }
             } else {
-                timerThis.countLeftClick++;
+                countRightClick++;
                 if (showNow === shortT || showNow === fullT) {
                     showNow = dateT;
                     clearInterval(timerId);
@@ -58,18 +57,16 @@ function Timer (button_el, display_el) {
     };
 
     this.getShortTime = function () {
-        var currentTime = new Date();
-
-        var hours = timerThis.getCorrectNum(currentTime.getHours());
-        var minutes = timerThis.getCorrectNum(currentTime.getMinutes());
+        var currentTime = new Date(),
+            hours = timerThis.getCorrectNum(currentTime.getHours()),
+            minutes = timerThis.getCorrectNum(currentTime.getMinutes());
 
         return hours + ':' + minutes;
     };
 
     this.getFullTime = function () {
-        var currentTime = new Date();
-
-        var seconds = timerThis.getCorrectNum(currentTime.getSeconds());
+        var currentTime = new Date(),
+            seconds = timerThis.getCorrectNum(currentTime.getSeconds());
 
         return timerThis.getShortTime() + ':' + seconds;
     };
@@ -86,4 +83,14 @@ function Timer (button_el, display_el) {
     this.getCorrectNum = function (recorrectNum) {
         return (recorrectNum < 10) ? '0' + recorrectNum : recorrectNum;
     };
+
+    this.getCountLeftClick = function () {
+        return countLeftClick;
+    };
+
+    this.getCountRightClick = function () {
+        return countRightClick;
+    };
+
+    return this;    
 }

@@ -1,10 +1,17 @@
-function Statistics () {
+function Statistics (ObjectTimer, _button_el) {
+    var objectTimer = ObjectTimer,
+        statisticsThis = this;
+        el = _button_el;        
 
-    this.showStatistics = function (countLeftClick, countRightClick) {
-        console.log('Left clicks: ' + countLeftClick + '; Right clicks: ' + countRightClick + '.');
+    this.showStatistics = function (objTimer) {        
+        return function () {
+            console.log('Left clicks: ' + (objTimer.getCountLeftClick() - 2) + '; Right clicks: ' + objTimer.getCountRightClick() + '.');          
+        }     
     }
 
     this.setListener = function () {
-        button_el.addEventListener('dblclick', this.showStatistics('right'), false);
+        el.addEventListener('dblclick', statisticsThis.showStatistics(objectTimer), false);
     };
+
+    return this;
 }

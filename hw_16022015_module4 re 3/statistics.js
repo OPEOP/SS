@@ -1,16 +1,29 @@
-function Statistics (ObjectTimer, _button_el) {
-    var objectTimer = ObjectTimer,
-        statisticsThis = this;
-        el = _button_el;        
+function Statistics (buttonEl) {
+    var countLeftClick = 0,
+        countRightClick = 0,
+        el = buttonEl;
 
-    this.showStatistics = function (objTimer) {        
-        return function () {
-            console.log('Left clicks: ' + (objTimer.getCountLeftClick() - 2) + '; Right clicks: ' + objTimer.getCountRightClick() + '.');          
-        }     
+    function showStatistics () {
+        console.log('Left clicks: ' + (countLeftClick - 2) +
+                    '; Right clicks: ' + countRightClick + '.');
     }
 
-    this.setListener = function () {
-        el.addEventListener('dblclick', statisticsThis.showStatistics(objectTimer), false);
+    function countingClicks (typeClick) {
+        return function () {
+            if (typeClick === 'dLeft') {
+                showStatistics();
+            } else if (typeClick === 'left') {
+                countLeftClick++;
+            } else if (typeClick === 'right') {
+                countRightClick++;
+            }
+        }
+    }
+
+    this.start = function () {
+        el.addEventListener('dblclick', countingClicks('dLeft'), false);
+        el.addEventListener('contextmenu', countingClicks('right'), false);
+        el.addEventListener('click', countingClicks('left'), false);
     };
 
     return this;

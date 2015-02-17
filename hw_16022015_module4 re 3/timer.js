@@ -1,96 +1,83 @@
-function Timer (button_el, display_el) {
+function Timer (_buttonEl, _displayEl) {
 
-    var button_el = button_el,
-        display_el = display_el,
-        timerThis = this,
+    var buttonEl= _buttonEl,
+        displayEl = _displayEl,
         shortT = 'shortTime',
         fullT = 'fullTime',
         dateT = 'date',
         showNow = fullT, // For start with short time
-        timerId = 1,
-        countLeftClick = 0,
-        countRightClick = 0;
+        timerId = 1;
 
-    this.setListeners = function () {
-        button_el.addEventListener('contextmenu', this.triggerTimer('right'), false);
-        button_el.addEventListener('click', this.triggerTimer('left'), false);
+    this.start = function () {
+        buttonEl.addEventListener('contextmenu', triggerTimer('right'), false);
+        buttonEl.addEventListener('click', triggerTimer('left'), false);
     };
 
-    this.showTime = function (stringTime) {
-        display_el.innerHTML = stringTime;
-    };
+    function showTime (stringTime) {
+        displayEl.innerHTML = stringTime;
+    }
 
-    this.triggerTimer = function (buttonPressed) {
+    function triggerTimer (buttonPressed) {
         return function () {
             if (buttonPressed === 'left') {
-                countLeftClick++;
                 if (showNow === fullT || showNow === dateT) {
                     showNow = shortT;
                     clearInterval(timerId);
                     timerId = setInterval(function () {
-                        timerThis.showTime(timerThis.getShortTime());
+                        showTime(getShortTime());
                     }, 500);
                 } else if (showNow === shortT) { // For explanations
                     showNow = fullT;
                     clearInterval(timerId);
                     timerId = setInterval(function () {
-                        timerThis.showTime(timerThis.getFullTime());
+                        showTime(getFullTime());
                     }, 500);
                 }
             } else {
-                countRightClick++;
                 if (showNow === shortT || showNow === fullT) {
                     showNow = dateT;
                     clearInterval(timerId);
                     timerId = setInterval(function () {
-                        timerThis.showTime(timerThis.getDate());
+                        showTime(getDate());
                     }, 500);
                 } else if (showNow === dateT) { // For explanations
                     showNow = shortT;
                     clearInterval(timerId);
                     timerId = setInterval(function () {
-                        timerThis.showTime(timerThis.getShortTime());
+                        showTime(getShortTime());
                     }, 500);
                 }
             }
         }
-    };
+    }
 
-    this.getShortTime = function () {
+    function getShortTime () {
         var currentTime = new Date(),
-            hours = timerThis.getCorrectNum(currentTime.getHours()),
-            minutes = timerThis.getCorrectNum(currentTime.getMinutes());
+            hours = getCorrectNum(currentTime.getHours()),
+            minutes = getCorrectNum(currentTime.getMinutes());
 
         return hours + ':' + minutes;
-    };
+    }
 
-    this.getFullTime = function () {
+    function getFullTime () {
         var currentTime = new Date(),
-            seconds = timerThis.getCorrectNum(currentTime.getSeconds());
+            seconds = getCorrectNum(currentTime.getSeconds());
 
-        return timerThis.getShortTime() + ':' + seconds;
-    };
+        return getShortTime() + ':' + seconds;
+    }
 
-    this.getDate = function () {
+     function getDate () {
         var currentTime = new Date(),
-            day = timerThis.getCorrectNum(currentTime.getDate()),
-            month = timerThis.getCorrectNum(currentTime.getMonth() + 1),
-            year = timerThis.getCorrectNum(currentTime.getFullYear() % 100);
+            day = getCorrectNum(currentTime.getDate()),
+            month = getCorrectNum(currentTime.getMonth() + 1),
+            year = getCorrectNum(currentTime.getFullYear() % 100);
 
         return day + '/' + month + '/' + year;
-    };
+    }
 
-    this.getCorrectNum = function (recorrectNum) {
+    function getCorrectNum (recorrectNum) {
         return (recorrectNum < 10) ? '0' + recorrectNum : recorrectNum;
-    };
-
-    this.getCountLeftClick = function () {
-        return countLeftClick;
-    };
-
-    this.getCountRightClick = function () {
-        return countRightClick;
-    };
+    }
 
     return this;    
 }

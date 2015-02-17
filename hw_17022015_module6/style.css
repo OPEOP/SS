@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.form{
+    width: 800px;
+    margin: 0 auto;
+}
+.form__general-window{
+    width: 800px;
+    height: 200px;
+    padding-top: 50px;
+}
+.form__select{
+    width: 200px;
+    height: 152px;
+    float: left;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.form__view{
+    width: 596px;
+    height: 152px;
+    float: right;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.form__item{
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+.form__item:hover{
+    background: #afafaf;
+}
+.form__title{
+    text-align: center;
+    position: relative;
+    top: 13px;
+}
+.form__information-window{
+    position: relative;
+    top: 12px;
+    left: 33px;
+
+}
+.form__input{
+    margin-bottom: 5px;
+}
+.form__show-block{
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: none;
+}
+.form__showPrint{
+    width: 300px;
+    height: 300px;
+    padding: 25px;
+    border: 1px solid green;
+}
+.form__showPrint-close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 0;
+}
+dl{
+    display: block;
+}
+dt{
+    font-style: italic;
+    display: block;
+}
+dd{
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 100px;
+    border-bottom: 1px dashed black;
+}
+
+.form_border-bottom_1px{
+    border-bottom: 1px solid black;
+}
+.form_display_none{
+    display: none;
+}
+.form_button-print{
+    width: 50px;
+    height: 25px;
+    float: right;
+}

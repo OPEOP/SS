@@ -5,7 +5,7 @@ function Manager () {
         outputElm = document.getElementById('view'),
         displayElm = document.getElementById('display'),
         selectElms = document.getElementsByClassName('form__item'),
-        selectItemElms = document.getElementsByClassName('form__information-window');;
+        selectItemElms = document.getElementsByClassName('form__information-window');
 
     function print () {
         var person = new Person();
@@ -42,7 +42,7 @@ function Manager () {
                     selectItemElms[i].className = modifyClassName;
                 }
             }
-        }
+        };
     }
 
     function addEvent (elm, typeEvent, fn) {
@@ -55,7 +55,7 @@ function Manager () {
         addEvent(buttonShowElm, 'click', print);
         addEvent(buttonCloseElm, 'click', close);
 
-        for (i = 0; i < selectElms.length; i++){
+        for (i = 0; i < selectElms.length; i++) {
             addEvent(selectElms[i], 'click', select(i));
         }
     };

@@ -3,14 +3,16 @@ function Statistics (buttonEl) {
         countRightClick = 0,
         el = buttonEl;
 
-    function showStatistics () {
-        console.log('Left clicks: ' + (countLeftClick - 2) +
-                    '; Right clicks: ' + countRightClick + '.');
-    }
+    this.start = function () {
+        el.addEventListener('dblclick', countingClicks('dLeft'), false);
+        el.addEventListener('contextmenu', countingClicks('right'), false);
+        el.addEventListener('click', countingClicks('left'), false);
+    };
 
     function countingClicks (typeClick) {
         return function () {
             if (typeClick === 'dLeft') {
+                countLeftClick = countLeftClick - 2; // delete double click out of statistics clicks
                 showStatistics();
             } else if (typeClick === 'left') {
                 countLeftClick++;
@@ -20,11 +22,10 @@ function Statistics (buttonEl) {
         }
     }
 
-    this.start = function () {
-        el.addEventListener('dblclick', countingClicks('dLeft'), false);
-        el.addEventListener('contextmenu', countingClicks('right'), false);
-        el.addEventListener('click', countingClicks('left'), false);
-    };
+    function showStatistics () {
+        console.log('Left clicks: ' + countLeftClick +
+                    '; Right clicks: ' + countRightClick + '.');
+    }
 
     return this;
 }

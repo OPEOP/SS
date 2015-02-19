@@ -13,10 +13,6 @@ function Timer (_buttonEl, _displayEl) {
         buttonEl.addEventListener('click', triggerTimer('left'), false);
     };
 
-    function showTime (stringTime) {
-        displayEl.innerHTML = stringTime;
-    }
-
     function triggerTimer (buttonPressed) {
         return function () {
             if (buttonPressed === 'left') {
@@ -49,6 +45,10 @@ function Timer (_buttonEl, _displayEl) {
                 }
             }
         }
+    }
+
+    function showTime (stringTime) {
+        displayEl.innerHTML = stringTime;
     }
 
     function getShortTime () {

@@ -1,3 +1,6 @@
 window.addEventListener('load', function () {
-    new Manager().start();
+
+    var manager = new Manager();
+    manager.start();
+
 }, false);

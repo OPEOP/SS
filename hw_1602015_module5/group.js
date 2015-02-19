@@ -1,5 +1,10 @@
-function Group () {
-    var students = [];
+function Group (_nameGroup) {
+    var nameGroup = _nameGroup,
+        students = [];
+
+    this.getNameGroup = function () {
+        return nameGroup;
+    };
 
     this.addStudent = function (name) {
         students.push(new Student(name));

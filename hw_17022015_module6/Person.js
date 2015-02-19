@@ -12,8 +12,7 @@ function Person () {
                 sex: null,
                 birthday: null
             },
-            i,
-            key;
+            i, key;
 
         for (key in options) {
             for (i = 0; i < inputElms.length; i++) {    // If changed order in form
@@ -26,20 +25,9 @@ function Person () {
         personData = options;
     };
 
-    this.printPersonData = function (outputElm) {
-        var li,
-            key;
-
-        for (key in personData) {
-            li = document.createElement('li');
-            li.innerHTML = '<dl><dt>' + key + ': </dt><dd>' + personData[key] + '</dd></dl>';
-            outputElm.appendChild(li);
-        }
-    };
-
     this.getPersonData = function () {
-        var key,
-            cloneObj = {};
+        var cloneObj = {},
+            key;
 
         for (key in personData) {
             cloneObj[key] = personData[key];

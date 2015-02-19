@@ -84,7 +84,7 @@ dd{
 .form_border-bottom_1px{
     border-bottom: 1px solid black;
 }
-.form_display_none{
+.hide {
     display: none;
 }
 .form_button-print{

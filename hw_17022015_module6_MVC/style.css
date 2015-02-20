@@ -1,0 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.form{
+    width: 1000px;
+    margin: 50px auto 0 auto;
+}
+.form__general-window{
+    width: 750px;
+    height: 200px;
+    /*padding-top: 50px;*/
+    float: right;
+}
+.tabs {
+    width: 200px;
+    height: 152px;
+    float: left;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.form__view{
+    width: 546px;
+    height: 152px;
+    float: right;
+    border: 1px solid black;
+    margin-bottom: 10px;
+}
+.tab {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+}
+.tab:hover{
+    background: #afafaf;
+}
+.form__title{
+    text-align: center;
+    position: relative;
+    top: 13px;
+}
+.tabItem {
+    position: relative;
+    top: 12px;
+    left: 33px;
+
+}
+.form__input{
+    margin-bottom: 5px;
+}
+.form__show-block{
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: none;
+    clear: both;
+    float: right;
+    right: 398px;
+}
+.form__showPrint{
+    width: 300px;
+    height: 300px;
+    padding: 25px;
+    border: 1px solid green;
+}
+.form__showPrint-close{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 2px;
+    right: 0;
+}
+dl{
+    display: block;
+}
+dt{
+    font-style: italic;
+    display: block;
+}
+dd{
+    display: inline-block;
+    font-weight: bold;
+    margin-left: 100px;
+    border-bottom: 1px dashed black;
+}
+
+.form_border-bottom_1px{
+    border-bottom: 1px solid black;
+}
+.hide{
+    display: none;
+}
+.show{
+    display: block;
+}
+.form_button-print{
+    width: 120px;
+    height: 25px;
+    float: right;
+}
+.form_button-create{
+    width: 100px;
+    height: 25px;
+    float: left;
+}
+.viewGroup{
+    width: 198px;
+    min-height: 200px;
+    border: 1px solid black;
+    float: left;
+    padding: 10px;
+}
+.groupTitle{
+    text-align: center;
+}
+.peopleGroup{
+    text-align: center;
+    margin-top: 10px;
+}
+.peopleGroup li {
+    list-style: circle;
+    width: 150px;
+    margin-left: 40px;
+    text-align: left;
+}

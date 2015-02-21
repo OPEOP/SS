@@ -1,9 +1,11 @@
 function Person () {
-    var personData = {};
+    var personData = {},
+        identifier;
 
-    // TODO: get not elements, but values from this elements
+    setIdentifier();
+
     // set all data from inputs viewTab
-    this.setPersonData = function (inputElms) {
+    this.setPersonData = function (_options) {
         var options = {
                 secondName: null,
                 firstName: null,
@@ -14,18 +16,23 @@ function Person () {
                 sex: null,
                 birthday: null
             },
-            i;
+            key;
 
-        // If changed order in form 
-        for (i = 0; i < inputElms.length; i++) {    
-            options[inputElms[i].getAttribute('name')] = inputElms[i].value;
+        // Check data
+        for (key in options) {
+            options[key] = _options[key];
         }
 
-        // inputElms.forEach(function (item) {
-        //     options[item.getAttribute('name')] = item.value;
-        // });
-
         personData = options;
+    };
+
+    // Set unique num for Person
+    function setIdentifier () {
+        identifier = new Date().getTime();
+    }
+
+    this.getIndentifier = function () {
+        return identifier;
     };
 
     this.toJSON = function () {
@@ -35,6 +42,8 @@ function Person () {
         for (key in personData) {
             cloneObj[key] = personData[key];
         }
+
+        cloneObj.identifier = identifier;
 
         return cloneObj;
     };

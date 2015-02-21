@@ -1,14 +1,12 @@
 function Controller () {
 
-    this.start = function () {
+    start();
+
+    function start () {
         var group = new Group('Some_Group'),
             viewTab = new ViewTab(group),
-            viewAllInfo = new ViewAllInfo(group);
-
-
-        viewTab.init();
-        viewAllInfo.init();
-    };
+            viewAllInfo = new ViewAllInfo();
+    }
 
     return this;
 }

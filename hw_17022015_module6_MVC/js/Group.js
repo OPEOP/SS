@@ -18,8 +18,50 @@ function Group (_nameGroup) {
         return lastPerson;
     };
 
-    this.getCountPersons = function () {
-        return persons.length;
+    this.getPersonDataByIdentifier = function (identifier) {
+        var foundPersonData,
+            i;
+
+        for (i = 0; i < persons.length; i++) {
+            if ((persons[i].getIndentifier() + '') === identifier) {
+                foundPersonData = persons[i].toJSON();
+                break;
+            }
+        }
+
+        //persons.forEach(function (item) {
+        //    if ((item.getIndentifier() + '') === identifier) {
+        //        foundPersonData = item.toJSON();
+        //    }
+        //});
+
+        return foundPersonData || 'not found';
+    };
+
+    this.getPersonByIdentifier = function (identifier) {
+        var foundPerson,
+            i;
+
+        for (i = 0; i < persons.length; i++) {
+            if ((persons[i].getIndentifier() + '') === identifier) {
+                foundPerson = persons[i];
+                break;
+            }
+        }
+
+        return foundPerson || 'not found';
+    };
+
+    this.removePerson = function (identifier) {
+        var deletedPerson, i;
+
+        for (i = 0; i < persons.length; i++) {
+            if (('' + persons[i].getIndentifier()) === identifier) {
+                deletedPerson = persons.splice(i, 1);
+                console.log('Student %s was deleted.', deletedPerson[0].getIndentifier());
+                break;
+            }
+        }
     };
 
     this.toJSON = function () {
@@ -39,6 +81,10 @@ function Group (_nameGroup) {
         return nameGroup;
     };
 
+    //this.getCountPersons = function () {
+    //    return persons.length;
+    //};
+
     //this.addPersons = function (persons) {
     //    var i;
     //
@@ -47,24 +93,8 @@ function Group (_nameGroup) {
     //    }
     //};
 
-    //this.getStudents = function () {
+    //this.getPersons = function () {
     //    return students;
-    //};
-
-    //this.removeStudent = function (name) {
-    //    var deletedStudents,
-    //        i;
-    //
-    //    for (i = 0; i < students.length; i++) {
-    //        if (students[i].toJSON() === name) {
-    //            deletedStudents = students.slice(i, 1);
-    //            break;
-    //        }
-    //    }
-    //
-    //    console.log('Student %s was deleted.', deletedStudents[0].toJSON());
-    //
-    //    return deletedStudents[0].toJSON();
     //};
 
     //this.clearGroup = function () {

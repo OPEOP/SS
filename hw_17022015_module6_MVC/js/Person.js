@@ -16,9 +16,14 @@ function Person () {
             },
             i;
 
-        for (i = 0; i < inputElms.length; i++) {    // If changed order in form
+        // If changed order in form 
+        for (i = 0; i < inputElms.length; i++) {    
             options[inputElms[i].getAttribute('name')] = inputElms[i].value;
         }
+
+        // inputElms.forEach(function (item) {
+        //     options[item.getAttribute('name')] = item.value;
+        // });
 
         personData = options;
     };

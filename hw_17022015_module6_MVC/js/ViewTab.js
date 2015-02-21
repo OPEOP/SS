@@ -13,7 +13,7 @@ function ViewTab (group) {
         viewGroup = new ViewGroup(group);
         viewGroup.init();
 
-        addEvent(createButton, 'click', setPersonData(group));
+        addEvent(createButton, 'click', setPersonData);
 
         for (i = 0; i < arrSelectors.length; i++) {
             addEvent(arrSelectors[i], 'click', select(i));
@@ -23,24 +23,21 @@ function ViewTab (group) {
     function addEvent (elm, typeEvent, fn) {
         elm.addEventListener(typeEvent, fn, false);
     }
+    
+    function setPersonData () {        
+        var person = new Person();
 
-    function setPersonData (_group) {
+        // TODO: Change arrInputs elements to arrValueInputs data
+        person.setPersonData(arrInputs);
 
-        return function () {
-            var person = new Person();
+        group.addPerson(person);
 
-            // TODO: Change arrInputs elements to arrValueInputs data
-            person.setPersonData(arrInputs);
+        viewGroup.printNewPerson();
 
-            _group.addPerson(person);
-
-            viewGroup.printNewPerson();
-
-            // Enabled button print after created first person
-            if (_group.getCountPeople() === 1) {
-                printButton.removeAttribute('disabled');
-            }
-        }
+        // Enabled button print after created first person
+        if (group.getCountPersons() === 1) {
+            printButton.removeAttribute('disabled');
+        }    
     }
 
     // show and hide selected menu

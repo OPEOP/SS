@@ -1,9 +1,9 @@
 function Group (_nameGroup) {
     var nameGroup = _nameGroup,
-        people = [];
+        persons = [];
 
     this.addPerson = function (person) {
-        people.push(person);
+        persons.push(person);
 
         console.log('Person %s was added', person.toString());
     };
@@ -11,15 +11,15 @@ function Group (_nameGroup) {
     this.getLastPerson = function () {
         var lastPerson;
 
-        if (people.length > 0) {
-            lastPerson = people[people.length - 1].toJSON();
+        if (persons.length > 0) {
+            lastPerson = persons[persons.length - 1].toJSON();
         }
 
         return lastPerson;
     };
 
-    this.getCountPeople = function () {
-        return people.length;
+    this.getCountPersons = function () {
+        return persons.length;
     };
 
     this.toJSON = function () {
@@ -28,8 +28,8 @@ function Group (_nameGroup) {
 
         jsonObj.nameGroup = nameGroup;
 
-        for (i = 0; i < people.length; i++) {
-            jsonObj[people[i].toString()] = people[i].toJSON();
+        for (i = 0; i < persons.length; i++) {
+            jsonObj[persons[i].toString()] = persons[i].toJSON();
         }
 
         return jsonObj;
@@ -39,11 +39,11 @@ function Group (_nameGroup) {
         return nameGroup;
     };
 
-    //this.addPeople = function (people) {
+    //this.addPersons = function (persons) {
     //    var i;
     //
-    //    for (i = 0; i < people.length; i++) {
-    //        this.addPerson(people[i]);
+    //    for (i = 0; i < persons.length; i++) {
+    //        this.addPerson(persons[i]);
     //    }
     //};
 

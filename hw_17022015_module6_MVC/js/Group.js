@@ -29,12 +29,6 @@ function Group (_nameGroup) {
             }
         }
 
-        //persons.forEach(function (item) {
-        //    if ((item.getIndentifier() + '') === identifier) {
-        //        foundPersonData = item.toJSON();
-        //    }
-        //});
-
         return foundPersonData || 'not found';
     };
 
@@ -80,28 +74,6 @@ function Group (_nameGroup) {
     this.toString = function () {
         return nameGroup;
     };
-
-    //this.getCountPersons = function () {
-    //    return persons.length;
-    //};
-
-    //this.addPersons = function (persons) {
-    //    var i;
-    //
-    //    for (i = 0; i < persons.length; i++) {
-    //        this.addPerson(persons[i]);
-    //    }
-    //};
-
-    //this.getPersons = function () {
-    //    return students;
-    //};
-
-    //this.clearGroup = function () {
-    //    students = [];
-    //
-    //    console.log('Group was cleaned.');
-    //};
 
     return this;
 }

@@ -17,7 +17,7 @@ function ViewTab (group) {
         addEvent(createButton, 'click', setPersonData);
 
         for (i = 0; i < tabs.length; i++) {
-            addEvent(tabs[i], 'click', select(i));
+            addEvent(tabs[i], 'click', tabsManager(i));
         }
     }
 
@@ -46,8 +46,7 @@ function ViewTab (group) {
         return tempDataFromInputs;
     }
 
-    // show and hide selected menu
-    function select (numClass) {
+    function tabsManager (numClass) {
         return function () {
             var i;
 

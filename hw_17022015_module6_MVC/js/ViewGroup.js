@@ -31,7 +31,9 @@ function ViewGroup (group, inputs) {
         foundPerson.setPersonData(newDataFromInputs);
 
         //reset name in display group
-        currentLi.innerHTML = foundPerson.toJSON().firstName + ' ' + foundPerson.toJSON().secondName;
+        currentLi.innerHTML = foundPerson.toJSON().secondName + ' '
+                                + foundPerson.toJSON().firstName[0] + ' '
+                                + foundPerson.toJSON().middleName[0];
 
         saveButton.style.display = 'none';
         deleteButton.style.display = 'none';
@@ -88,7 +90,9 @@ function ViewGroup (group, inputs) {
         var li;
 
         li = document.createElement('li');
-        li.innerHTML = group.getLastPerson().firstName + ' ' + group.getLastPerson().secondName;
+        li.innerHTML = group.getLastPerson().secondName + ' '
+                        + group.getLastPerson().firstName[0] + ' '
+                        + group.getLastPerson().middleName[0];
         li.className = 'itemGroup';
         // Set 'li' element identifier for our new person, we could find his in DOM
         li.setAttribute('name', '' + group.getLastPerson().identifier);
@@ -99,27 +103,6 @@ function ViewGroup (group, inputs) {
         addEvent(itemsGroup[itemsGroup.length - 1], 'click', edit(currentNumLi));
         currentNumLi++;
     };
-
-    //function removeEvent (elm, typeEvent, fn) {
-    //    elm.removeEventListener(typeEvent, fn, false);
-    //}
-
-    //function parseJSONGroupToArr () {
-    //    var parameters = [],
-    //        i = 1,
-    //        item;
-    //
-    //    parameters.push(groupJSON.nameGroup);
-    //
-    //    for (item in groupJSON) {
-    //        if (item !== 'nameGroup') {
-    //            parameters.push(groupJSON[item].name);
-    //            i++;
-    //        }
-    //    }
-    //
-    //    return parameters;
-    //}
 
     return this;
 }

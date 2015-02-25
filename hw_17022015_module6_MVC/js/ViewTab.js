@@ -10,15 +10,9 @@ function ViewTab (group) {
     init();
 
     function init () {
-        var i;
-
         viewGroup = new ViewGroup(group, inputs);
 
         addEvent(createButton, 'click', setPersonData);
-
-        for (i = 0; i < tabs.length; i++) {
-            addEvent(tabs[i], 'click', tabsManager(i));
-        }
     }
 
     function addEvent (elm, typeEvent, fn) {
@@ -44,20 +38,6 @@ function ViewTab (group) {
         }
 
         return tempDataFromInputs;
-    }
-
-    function tabsManager (numClass) {
-        return function () {
-            var i;
-
-            for (i = 0; i < tabsItems.length; i++) {
-                if (i === numClass) {
-                    tabsItems[i].style.display = 'block';
-                } else {
-                    tabsItems[i].style.display = 'none';
-                }
-            }
-        };
     }
 
     return this;

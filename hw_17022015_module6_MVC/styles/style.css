@@ -24,7 +24,7 @@
     clear: both;
     float: right;
     right: 390px;
-    top: 410px;
+    top: 430px;
 }
 .form__showPrint{
     width: 353px;
@@ -59,12 +59,6 @@ dd{
 
 .form_border-bottom_1px{
     border-bottom: 1px solid #cccccc;
-}
-.hide{
-    display: none;
-}
-.show{
-    display: block;
 }
 .viewGroup{
     width: 198px;

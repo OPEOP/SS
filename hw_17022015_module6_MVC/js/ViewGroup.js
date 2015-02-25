@@ -32,8 +32,8 @@ function ViewGroup (group, inputs) {
 
         //reset name in display group
         currentLi.innerHTML = foundPerson.toJSON().secondName + ' '
-                                + foundPerson.toJSON().firstName[0] + ' '
-                                + foundPerson.toJSON().middleName[0];
+                                + (foundPerson.toJSON().firstName[0] || "") + ' '
+                                + (foundPerson.toJSON().middleName[0] || "");
 
         saveButton.style.display = 'none';
         deleteButton.style.display = 'none';
@@ -91,8 +91,8 @@ function ViewGroup (group, inputs) {
 
         li = document.createElement('li');
         li.innerHTML = group.getLastPerson().secondName + ' '
-                        + group.getLastPerson().firstName[0] + ' '
-                        + group.getLastPerson().middleName[0];
+                        + (group.getLastPerson().firstName[0] || "") + ' '
+                        + (group.getLastPerson().middleName[0] || "");
         li.className = 'itemGroup';
         // Set 'li' element identifier for our new person, we could find his in DOM
         li.setAttribute('name', '' + group.getLastPerson().identifier);

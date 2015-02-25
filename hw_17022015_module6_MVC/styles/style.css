@@ -2,71 +2,41 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    color: #555;
 }
 .form{
     width: 1000px;
     margin: 50px auto 0 auto;
 }
 .form__general-window{
-    width: 750px;
+    width: 800px;
     height: 200px;
-    /*padding-top: 50px;*/
     float: right;
-}
-.tabs {
-    width: 200px;
-    height: 152px;
-    float: left;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-.form__view{
-    width: 546px;
-    height: 152px;
-    float: right;
-    border: 1px solid black;
-    margin-bottom: 10px;
-}
-.tab {
-    width: 200px;
-    height: 50px;
-    cursor: pointer;
-}
-.tab:hover{
-    background: #afafaf;
-}
-.form__title{
-    text-align: center;
-    position: relative;
-    top: 13px;
-}
-.tabItem {
-    position: relative;
-    top: 12px;
-    left: 33px;
-
 }
 .form__input{
     margin-bottom: 5px;
 }
 .form__show-block{
-    position: relative;
+    position: absolute;
     width: 350px;
     height: 290px;
     display: none;
     clear: both;
     float: right;
-    right: 398px;
+    right: 390px;
+    top: 410px;
 }
 .form__showPrint{
-    width: 300px;
-    height: 290px;
+    width: 353px;
+    min-height: 290px;
     padding: 25px;
-    border: 1px solid green;
+    border: 1px solid #cccccc;
+    border-bottom-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 .form__showPrint-close{
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 30px;
     border-radius: 4px;
     font-size: 9px;
     position: absolute;
@@ -84,11 +54,11 @@ dd{
     display: inline-block;
     font-weight: bold;
     margin-left: 100px;
-    border-bottom: 1px dashed black;
+    border-bottom: 1px dashed #cccccc;
 }
 
 .form_border-bottom_1px{
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #cccccc;
 }
 .hide{
     display: none;
@@ -98,10 +68,12 @@ dd{
 }
 .viewGroup{
     width: 198px;
-    min-height: 200px;
-    border: 1px solid black;
+    min-height: 302px;
+    border: 1px solid #cccccc;
     float: left;
     padding: 10px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
 }
 .groupTitle{
     text-align: center;
@@ -126,32 +98,47 @@ dd{
 
 }
 .form_button-print{
-    width: 120px;
+    width: 118px;
     height: 40px;
     border-radius: 4px;
     float: right;
 }
 .form_button-create{
-    width: 95px;
+    width: 118px;
     height: 40px;
     border-radius: 4px;
     float: left;
 }
 .form_button-save{
-    width: 95px;
+    width: 118px;
     height: 40px;
     border-radius: 4px;
     float: left;
     position: relative;
-    left: -95px;
+    left: -118px;
     display: none;
 }
 .form_button-delete{
-    width: 95px;
+    width: 118px;
     height: 40px;
     border-radius: 4px;
     float: left;
     position: relative;
     left: -80px;
     display: none;
+}
+.view-tab{
+    width: 800px;
+    float: right;
+    margin-bottom: 20px;
+}
+.tab-pane{
+    width: 800px;
+    height: 260px;
+    border: 1px solid #cccccc;
+    border-top: none;
+    padding: 10px;
+}
+.form-control{
+    width: 200px;
 }

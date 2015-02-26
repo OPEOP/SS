@@ -17,14 +17,13 @@
     margin-bottom: 5px;
 }
 .form__show-block{
-    position: absolute;
+    position: relative;
     width: 350px;
     height: 290px;
     display: none;
-    clear: both;
     float: right;
-    right: 390px;
-    top: 430px;
+    right: 220px;
+    top: 200px;
 }
 .form__showPrint{
     width: 353px;

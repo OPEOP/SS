@@ -43,7 +43,19 @@ function ViewGroup (group, inputs) {
         var tempDataFromInputs = {},
             i;
 
-        for (i = 0; i < _inputs.length; i++) {
+        //for (i = 0; i < _inputs.length; i++) {
+        //    tempDataFromInputs[_inputs[i].getAttribute('name')] = _inputs[i].value;
+        //}
+
+        for (i = 0; i < inputs.length; i++) {
+            if (_inputs[i].getAttribute('name') === 'sex') {
+                if (_inputs[i].checked === true) {
+                    tempDataFromInputs[_inputs[i].getAttribute('name')] = _inputs[i].value;
+                }
+
+                continue;
+            }
+
             tempDataFromInputs[_inputs[i].getAttribute('name')] = _inputs[i].value;
         }
 
@@ -82,6 +94,12 @@ function ViewGroup (group, inputs) {
         var i;
 
         for (i = 0; i < inputs.length; i++) {
+            if (inputs[i].getAttribute('name') === 'sex') {
+                inputs[i].checked = inputs[i].value === editPerson[inputs[i].getAttribute('name')];
+
+                continue;
+            }
+
             inputs[i].value = editPerson[inputs[i].getAttribute('name')];
         }
     }

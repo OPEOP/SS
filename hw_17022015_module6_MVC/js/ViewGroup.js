@@ -43,10 +43,6 @@ function ViewGroup (group, inputs) {
         var tempDataFromInputs = {},
             i;
 
-        //for (i = 0; i < _inputs.length; i++) {
-        //    tempDataFromInputs[_inputs[i].getAttribute('name')] = _inputs[i].value;
-        //}
-
         for (i = 0; i < inputs.length; i++) {
             if (_inputs[i].getAttribute('name') === 'sex') {
                 if (_inputs[i].checked === true) {

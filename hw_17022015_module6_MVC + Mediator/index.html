@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head lang='en'>
+        <meta charset='UTF-8'>
+        <title>GroupPro</title>
+        <link href="frameworks/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles/style.css"/>
+        <script src="js/main.js"></script>
+        <script src="js/Person.js"></script>
+        <script src="js/Controller.js"></script>
+        <script src="js/Group.js"></script>
+        <script src="js/PersonView.js"></script>
+        <script src="js/PreviewView.js"></script>
+        <script src="js/GroupView.js"></script>
+        <script src="js/GroupMemberView.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="frameworks/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <form class="form">
+
+            <div class="viewGroup">
+                <h3 class="groupTitle" id="groupName"></h3>
+                <ul class="peopleGroup" id="displayGroup">
+                </ul>
+            </div>
+
+            <div class="form__general-window">
+                <div class="view-tab" role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">ФИО</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Паспорт/ИНН</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Пол/Возраст</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="home">
+                            <h4 class="form__input-title">Фамилия</h4>
+                            <input class="form__input form-control" type="text" name="secondName"/>
+                            <h4 class="form__input-title">Имя</h4>
+                            <input class="form__input form-control" type="text" name="firstName"/>
+                            <h4 class="form__input-title">Очество</h4>
+                            <input class="form__input form-control" type="text" name="middleName"/>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="profile">
+                            <h4 class="form__input-title">Серия паспорта</h4>
+                            <input class="form__input form-control" type="text" name="serPassport"/>
+                            <h4 class="form__input-title">Номер паспорта</h4>
+                            <input class="form__input form-control" type="text" name="numPassport"/>
+                            <h4 class="form__input-title">ИНН</h4>
+                            <input class="form__input form-control" type="text" name="inn"/>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="messages">
+                            <h4 class="form__input-title">Пол</h4>
+                            <input class="form__input" type="radio" name="sex" value="male" checked/> М</br>
+                            <input class="form__input" type="radio" name="sex" value="female"/> Ж</br>
+                            <h4 class="form__input-title">Дата рождения</h4>
+                            <input class="form__input form-control" type="date" name="birthday"/>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button class="form_button-print btn btn-default" id="previewButton" type="button">Print view</button>
+                <button class="form_button-create btn btn-default" id="createButton" type="reset">Create Person</button>
+                <button class="form_button-save btn btn-default" id="saveButton" type="reset">Save</button>
+            </div>
+
+            <div class="form__show-block" id="display">
+                <ul class="form__showPrint" id="view"></ul>
+                <button  class="form__showPrint-close btn btn-default" id="closeButton" type="button">x</button>
+            </div>
+
+        </form>
+
+        <script src="libs/mediator.min.js"></script>
+
+        <script>
+            var mediator = new Mediator();
+
+            function Obj1 (m) {
+
+                var f = function (a) {
+                    console.log(a);
+                };
+
+                m.subscribe('test', f);
+            }
+
+            function Obj2 (m) {
+                var a = 'mitya';
+
+                m.publish('test', a);
+            }
+
+            var ob1 = new Obj1(mediator),
+                ob2 = new Obj2(mediator);
+        </script>
+
+    </body>
+</html>

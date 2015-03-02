@@ -5,6 +5,7 @@
         <title>GroupPro</title>
         <link href="frameworks/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/style.css"/>
+        <script src="libs/mediator.min.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Person.js"></script>
         <script src="js/Controller.js"></script>
@@ -17,7 +18,7 @@
         <script src="frameworks/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <form class="form">
+        <form class="form" id="form">
 
             <div class="viewGroup">
                 <h3 class="groupTitle" id="groupName"></h3>
@@ -75,30 +76,5 @@
             </div>
 
         </form>
-
-        <script src="libs/mediator.min.js"></script>
-
-        <script>
-            var mediator = new Mediator();
-
-            function Obj1 (m) {
-
-                var f = function (a) {
-                    console.log(a);
-                };
-
-                m.subscribe('test', f);
-            }
-
-            function Obj2 (m) {
-                var a = 'mitya';
-
-                m.publish('test', a);
-            }
-
-            var ob1 = new Obj1(mediator),
-                ob2 = new Obj2(mediator);
-        </script>
-
     </body>
 </html>

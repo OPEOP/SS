@@ -68,5 +68,9 @@ function PreviewView () {
         display.style.display = 'block';
     };
 
+    this.close = function () {
+        close();
+    };
+
     return this;
 }

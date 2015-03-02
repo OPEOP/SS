@@ -1,4 +1,4 @@
-function GroupMemberView (person, li, mediator) {
+function GroupMemberView (person, li) {
     var inputs = document.getElementsByClassName('form__input'),
         saveButton = document.getElementById('saveButton'),
         spanInLi = document.createElement('span'),
@@ -64,6 +64,8 @@ function GroupMemberView (person, li, mediator) {
     }
 
     function showPreview () {
+        //To previewView
+        mediator.publish('closePreview');
         //To previewView
         mediator.publish('showPreview', person.toJSON());
     }
@@ -131,6 +133,9 @@ function GroupMemberView (person, li, mediator) {
     function deletePerson () {
         // To groupView
         mediator.publish('deleteMember', person.getIdentifier());
+
+        document.getElementById('form').reset();
+        saveButton.style.display = 'none';
     }
 
     return this;

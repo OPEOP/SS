@@ -1,8 +1,7 @@
-function GroupView (mediator, group) {
+function GroupView (group) {
 
     var groupNameEl = document.getElementById('groupName'),
         displayGroup = document.getElementById('displayGroup'),
-        saveButton = document.getElementById('saveButton'),
         deleteButton = document.getElementById('deleteButton'),
         members = [],
         itemsGroup;

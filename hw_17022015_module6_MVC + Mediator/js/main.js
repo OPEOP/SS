@@ -1,6 +1,7 @@
+var mediator = new Mediator();
+
 window.addEventListener('load', function () {
 
-    var mediator = new Mediator(),
-        controler = new Controller(mediator);
+    var controler = new Controller();
 
 }, false);

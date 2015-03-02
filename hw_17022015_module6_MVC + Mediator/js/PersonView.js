@@ -1,4 +1,4 @@
-function PersonView (mediator) {
+function PersonView () {
 
     var inputs = document.getElementsByClassName('form__input'),
         createButton = document.getElementById('createButton'),
@@ -19,9 +19,9 @@ function PersonView (mediator) {
 
         person.setPersonData(getDataFromInputs(inputs));
 
-        // For group
+        //To group
         mediator.publish('addPerson', person);
-        // For groupView
+        //To groupView
         mediator.publish('printNewPerson');
     }
 

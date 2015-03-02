@@ -13,9 +13,11 @@ function GroupMemberView (person, li) {
     }
 
     function showMember () {
-        spanInLi.innerHTML = person.toJSON().secondName + ' '
-                            + (person.toJSON().firstName[0] || "") + ' '
-                            + (person.toJSON().middleName[0] || "");
+        var personData = person.toJSON();
+
+        spanInLi.innerHTML = personData.secondName + ' '
+                            + (personData.firstName[0] || "") + ' '
+                            + (personData.middleName[0] || "");
 
         li.appendChild(spanInLi);
 
@@ -91,14 +93,17 @@ function GroupMemberView (person, li) {
     }
 
     function savePersonData () {
-        var newDataFromInputs = getDataFromInputs(inputs);
+        var newDataFromInputs = getDataFromInputs(inputs),
+            personData;
 
         person.setPersonData(newDataFromInputs);
 
+        personData = person.toJSON();
+
         //reset name in display group
-        spanInLi.innerHTML = person.toJSON().secondName + ' '
-        + (person.toJSON().firstName[0] || "") + ' '
-        + (person.toJSON().middleName[0] || "");
+        spanInLi.innerHTML = personData.secondName + ' '
+        + (personData.firstName[0] || "") + ' '
+        + (personData.middleName[0] || "");
 
         saveButton.style.display = 'none';
 

@@ -1,20 +1,45 @@
 function Controller () {
+    var group = new Group('GroupName'),
+        personView = new PersonView(group),
+        previewView = new PreviewView(),
+        groupView = new GroupView(group);
 
-    start();
+    setSubscribers();
 
-    function start () {
-        var group = new Group('GroupName'),
-            personView = new PersonView(group),
-            previewView = new PreviewView(),
-            groupView = new GroupView(group);
+    function setSubscribers () {
+        //From PersonView
+        mediator.subscribe('addPerson', addPerson);
+        //From PersonView
+        mediator.subscribe('printNewPerson', printNewPerson);
+        //From GroupMemberView
+        mediator.subscribe('showMember', showMember);
+        //From GroupMemberView
+        mediator.subscribe('deleteMember', deleteMember);
+        //From GroupMemberView
+        mediator.subscribe('showPreview', showPreview);
+    }
 
-        mediator.subscribe('addPerson', group.addPerson);
-        mediator.subscribe('printNewPerson', groupView.printNewPerson);
-        mediator.subscribe('getPersonByIdentifier', group.getPersonByIdentifier);
-        mediator.subscribe('showMember', groupView.showMember);
-        mediator.subscribe('deleteMember', groupView.deleteMember);
-        mediator.subscribe('closePreview', previewView.close);
-        mediator.subscribe('showPreview', previewView.print);
+    function addPerson (person) {
+        group.addPerson(person);
+    }
+
+    function printNewPerson () {
+        groupView.printNewPerson();
+    }
+
+    function showMember (li) {
+        groupView.showMember(li);
+    }
+
+    function deleteMember (person, li) {
+        groupView.deleteMember(li);
+        group.removePerson(person.getId());
+        document.getElementById('form').reset();
+    }
+
+    function showPreview (personData) {
+        previewView.close();
+        previewView.print(personData);
     }
 
     return this;

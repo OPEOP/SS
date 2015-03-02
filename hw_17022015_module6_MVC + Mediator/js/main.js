@@ -2,6 +2,6 @@ var mediator = new Mediator();
 
 window.addEventListener('load', function () {
 
-    var controler = new Controller();
+    var controller = new Controller();
 
 }, false);

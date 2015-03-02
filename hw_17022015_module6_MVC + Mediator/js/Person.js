@@ -1,8 +1,8 @@
 function Person () {
     var personData = {},
-        identifier;
+        id;
 
-    setIdentifier();
+    setId();
 
     // set all data from inputs viewTab
     this.setPersonData = function (_options) {
@@ -27,12 +27,12 @@ function Person () {
     };
 
     // Set unique num for Person
-    function setIdentifier () {
-        identifier = new Date().getTime();
+    function setId () {
+        id = new Date().getTime();
     }
 
-    this.getIdentifier = function () {
-        return identifier;
+    this.getId = function () {
+        return id;
     };
 
     this.toJSON = function () {
@@ -43,7 +43,7 @@ function Person () {
             cloneObj[key] = personData[key];
         }
 
-        cloneObj.identifier = identifier;
+        cloneObj.id = id;
 
         return cloneObj;
     };

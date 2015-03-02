@@ -22,8 +22,6 @@ function GroupMemberView (person, li) {
         setButtons();
         addButtons();
 
-        li.setAttribute('name', '' + person.toJSON().identifier);
-
         mediator.publish('showMember', li);
 
         setEventsOnButtons();
@@ -131,10 +129,9 @@ function GroupMemberView (person, li) {
     }
 
     function deletePerson () {
-        // To groupView
-        mediator.publish('deleteMember', person.getIdentifier());
+        // To groupView and group
+        mediator.publish('deleteMember', person, li);
 
-        document.getElementById('form').reset();
         saveButton.style.display = 'none';
     }
 

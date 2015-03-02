@@ -18,41 +18,31 @@ function Group (_nameGroup) {
         return lastPerson;
     };
 
-    this.getPersonDataByIdentifier = function (identifier) {
-        var foundPersonData,
-            i;
-
-        for (i = 0; i < persons.length; i++) {
-            if ((persons[i].getIdentifier() + '') === identifier) {
-                foundPersonData = persons[i].toJSON();
-                break;
-            }
-        }
-
-        return foundPersonData || 'not found';
+    this.getPersonDataByIdentifier = function (id) {
+        return this.getPersonByIdentifier(id).toJSON();
     };
 
-    this.getPersonByIdentifier = function (identifier) {
+    this.getPersonByIdentifier = function (id) {
         var foundPerson,
             i;
 
         for (i = 0; i < persons.length; i++) {
-            if ((persons[i].getIdentifier() + '') === identifier) {
+            if ((persons[i].getId() + '') === id) {
                 foundPerson = persons[i];
                 break;
             }
         }
 
-        return foundPerson || 'not found';
+        return foundPerson || {};
     };
 
-    this.removePerson = function (identifier) {
+    this.removePerson = function (id) {
         var deletedPerson, i;
 
         for (i = 0; i < persons.length; i++) {
-            if ((persons[i].getIdentifier()) === identifier) {
+            if ((persons[i].getId()) === id) {
                 deletedPerson = persons.splice(i, 1);
-                console.log('Person %s was deleted.', deletedPerson[0].getIdentifier());
+                console.log('Person %s was deleted.', deletedPerson[0].getId());
                 break;
             }
         }

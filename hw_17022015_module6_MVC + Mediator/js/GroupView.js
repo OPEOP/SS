@@ -3,8 +3,7 @@ function GroupView (group) {
     var groupNameEl = document.getElementById('groupName'),
         displayGroup = document.getElementById('displayGroup'),
         deleteButton = document.getElementById('deleteButton'),
-        members = [],
-        itemsGroup;
+        members = [];
 
     init();
 
@@ -19,34 +18,16 @@ function GroupView (group) {
 
         li.className = 'itemGroup';
 
-        members.push(new GroupMemberView(group.getLastPerson(), li, mediator));
+        members.push(new GroupMemberView(group.getLastPerson(), li));
     };
 
     this.showMember = function (li) {
         displayGroup.appendChild(li);
-
-        itemsGroup = document.getElementsByClassName('itemGroup');
     };
 
-    this.deleteMember = function (identifier) {
-        var liFound = foundLi(identifier);
-
-        group.removePerson(identifier);
-
-        liFound.parentNode.removeChild(liFound);
+    this.deleteMember = function (li) {
+        li.parentNode.removeChild(li);
     };
-
-    function foundLi (identifier) {
-        var liFound, i;
-        for (i = 0; i < itemsGroup.length; i++) {
-            if (itemsGroup[i].getAttribute('name') === ('' + identifier)) {
-                liFound = itemsGroup[i];
-                break;
-            }
-        }
-
-        return liFound;
-    }
 
     return this;
 }

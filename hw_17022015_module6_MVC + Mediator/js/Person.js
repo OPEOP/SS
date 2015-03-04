@@ -7,14 +7,14 @@ function Person () {
     // set all data from inputs viewTab
     this.setPersonData = function (_options) {
         var options = {
-                secondName: null,
-                firstName: null,
+                secondName: '',
+                firstName: '',
                 middleName: '',
-                serPassport: null,
-                numPassport: null,
+                serPassport: '',
+                numPassport: '',
                 inn: '',
-                sex: null,
-                birthday: null
+                sex: '',
+                birthday: ''
             },
             key;
 

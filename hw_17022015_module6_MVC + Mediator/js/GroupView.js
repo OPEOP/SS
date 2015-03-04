@@ -25,8 +25,16 @@ function GroupView (group) {
         displayGroup.appendChild(li);
     };
 
-    this.deleteMember = function (li) {
+    this.deleteMember = function (li, id) {
+        var i;
+
         li.parentNode.removeChild(li);
+
+        for (i = 0; i < members.length; i++) {
+            if (members[i] && members[i].getId() === id) {
+                delete members[i];
+            }
+        }
     };
 
     return this;

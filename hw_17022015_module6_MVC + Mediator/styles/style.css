@@ -20,7 +20,7 @@
     position: relative;
     width: 350px;
     height: 290px;
-    display: none;
+    display: block;
     float: right;
     right: 220px;
     top: 200px;
@@ -113,7 +113,7 @@ dd{
     float: left;
     position: relative;
     left: -118px;
-    display: none;
+    display: block;
 }
 .form_button-delete{
     width: 118px;
@@ -145,4 +145,7 @@ dd{
     height: 15px;
     font-size: 10px;
     float: right;
+}
+.hide{
+    display: none;
 }

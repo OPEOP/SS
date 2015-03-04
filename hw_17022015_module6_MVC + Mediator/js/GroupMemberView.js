@@ -1,10 +1,14 @@
 function GroupMemberView (person, li) {
-    var inputs = document.getElementsByClassName('form__input'),
+    var id = person.getId(),
         saveButton = document.getElementById('saveButton'),
         spanInLi = document.createElement('span'),
+        tplHTML = (document.getElementById('tpl')).innerHTML,
+        tabContent = document.getElementById('tab-cont'),
+        inputs = tabContent.getElementsByClassName('form__input'),
         editButton,
         deleteButton,
-        previewButton;
+        previewButton,
+        tpl;
 
     init();
 
@@ -73,23 +77,17 @@ function GroupMemberView (person, li) {
     function edit () {
         setPersonDataInInputs();
 
-        saveButton.style.display = 'block';
+        Helper.removeClass('hide', saveButton);
 
         addEvent(saveButton, 'click', savePersonData);
     }
 
     function setPersonDataInInputs () {
-        var i;
+        tpl = _.template(tplHTML);
 
-        for (i = 0; i < inputs.length; i++) {
-            if (inputs[i].getAttribute('name') === 'sex') {
-                inputs[i].checked = inputs[i].value === person.toJSON()[inputs[i].getAttribute('name')];
+        tabContent.innerHTML = tpl(person.toJSON());
 
-                continue;
-            }
-
-            inputs[i].value = person.toJSON()[inputs[i].getAttribute('name')];
-        }
+        inputs = tabContent.getElementsByClassName('form__input');
     }
 
     function savePersonData () {
@@ -102,10 +100,25 @@ function GroupMemberView (person, li) {
 
         //reset name in display group
         spanInLi.innerHTML = personData.secondName + ' '
-        + (personData.firstName[0] || "") + ' '
-        + (personData.middleName[0] || "");
+                            + (personData.firstName[0] || "") + ' '
+                            + (personData.middleName[0] || "");
 
-        saveButton.style.display = 'none';
+        Helper.addClass('hide', saveButton);
+
+        // For reset inputs, because don`t working form.reset() or button reset after tpl sets
+        tabContent.innerHTML = tpl({
+            secondName: '',
+            firstName: '',
+            middleName: '',
+            serPassport: '',
+            numPassport: '',
+            inn: '',
+            sex: 'male',
+            birthday: ''
+        });
+
+        //To Helper
+        mediator.publish('restoreTabs');
 
         removeEvent(saveButton, 'click', savePersonData);
     }
@@ -137,8 +150,12 @@ function GroupMemberView (person, li) {
         // To groupView and group
         mediator.publish('deleteMember', person, li);
 
-        saveButton.style.display = 'none';
+        Helper.addClass('hide', saveButton);
     }
+
+    this.getId = function () {
+        return id;
+    };
 
     return this;
 }

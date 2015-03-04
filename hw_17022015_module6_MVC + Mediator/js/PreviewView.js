@@ -22,7 +22,8 @@ function PreviewView () {
         print(tempDataFromInputs);
 
         previewButton.setAttribute('disabled', 'disabled');
-        display.style.display = 'block';        
+
+        Helper.removeClass('hide', display);
     }
 
     function getDataFromInputs (_inputs) {
@@ -55,7 +56,7 @@ function PreviewView () {
     }
 
     function close () {
-        display.style.display = 'none';
+        Helper.addClass('hide', display);
         previewButton.removeAttribute('disabled');
 
         output.innerHTML = ''; //clear list in html
@@ -65,7 +66,7 @@ function PreviewView () {
         print(from);
 
         previewButton.setAttribute('disabled', 'disabled');
-        display.style.display = 'block';
+        Helper.removeClass('hide', display);
     };
 
     this.close = function () {

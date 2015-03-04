@@ -23,6 +23,8 @@ function PersonView () {
         mediator.publish('addPerson', person);
         //To groupView
         mediator.publish('printNewPerson');
+        //To Helper
+        mediator.publish('restoreTabs');
     }
 
     function getDataFromInputs (_inputs) {

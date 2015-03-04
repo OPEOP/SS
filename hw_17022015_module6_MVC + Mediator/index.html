@@ -6,6 +6,8 @@
         <link href="frameworks/bootstrap-3.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="styles/style.css"/>
         <script src="libs/mediator.min.js"></script>
+        <script src="libs/underscore.js"></script>
+        <script src="js/Helper.js"></script>
         <script src="js/main.js"></script>
         <script src="js/Person.js"></script>
         <script src="js/Controller.js"></script>
@@ -16,6 +18,33 @@
         <script src="js/GroupMemberView.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="frameworks/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+
+        <!--TMP FOR UNDERSCORE-->
+        <script type="text/html" id="tpl">
+            <div role="tabpanel" class="tab-pane active" id="FIO">
+                <h4 class="form__input-title">Фамилия</h4>
+                <input class="form__input form-control" type="text" name="secondName" value="<%= secondName %>"/>
+                <h4 class="form__input-title">Имя</h4>
+                <input class="form__input form-control" type="text" name="firstName" value="<%= firstName %>"/>
+                <h4 class="form__input-title">Очество</h4>
+                <input class="form__input form-control" type="text" name="middleName" value="<%= middleName %>"/>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="passport-inn">
+                <h4 class="form__input-title">Серия паспорта</h4>
+                <input class="form__input form-control" type="text" name="serPassport" value="<%= serPassport %>"/>
+                <h4 class="form__input-title">Номер паспорта</h4>
+                <input class="form__input form-control" type="text" name="numPassport" value="<%= numPassport %>"/>
+                <h4 class="form__input-title">ИНН</h4>
+                <input class="form__input form-control" type="text" name="inn" value="<%= inn %>"/>
+            </div>
+            <div role="tabpanel" class="tab-pane" id="gender-birthday">
+                <h4 class="form__input-title">Пол</h4>
+                <input class="form__input" type="radio" name="sex" value="male" <%= sex === 'male'? 'checked': '' %>/> М</br>
+                <input class="form__input" type="radio" name="sex" value="female" <%= sex === 'female'? 'checked': '' %>/> Ж</br>
+                <h4 class="form__input-title">Дата рождения</h4>
+                <input class="form__input form-control" type="date" name="birthday" value="<%= birthday %>"/>
+            </div>
+        </script>
     </head>
     <body>
         <form class="form" id="form">
@@ -31,14 +60,14 @@
 
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
-                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">ФИО</a></li>
-                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Паспорт/ИНН</a></li>
-                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Пол/Возраст</a></li>
+                        <li role="presentation" class="active" id="nav-first-tab"><a href="#FIO" aria-controls="FIO" role="tab" data-toggle="tab">ФИО</a></li>
+                        <li role="presentation"><a href="#passport-inn" aria-controls="passport-inn" role="tab" data-toggle="tab">Паспорт/ИНН</a></li>
+                        <li role="presentation"><a href="#gender-birthday" aria-controls="gender-birthday" role="tab" data-toggle="tab">Пол/Возраст</a></li>
                     </ul>
 
                     <!-- Tab panes -->
-                    <div class="tab-content">
-                        <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="tab-content" id="tab-cont">
+                        <div role="tabpanel" class="tab-pane active" id="FIO">
                             <h4 class="form__input-title">Фамилия</h4>
                             <input class="form__input form-control" type="text" name="secondName"/>
                             <h4 class="form__input-title">Имя</h4>
@@ -46,7 +75,7 @@
                             <h4 class="form__input-title">Очество</h4>
                             <input class="form__input form-control" type="text" name="middleName"/>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="profile">
+                        <div role="tabpanel" class="tab-pane" id="passport-inn">
                             <h4 class="form__input-title">Серия паспорта</h4>
                             <input class="form__input form-control" type="text" name="serPassport"/>
                             <h4 class="form__input-title">Номер паспорта</h4>
@@ -54,7 +83,7 @@
                             <h4 class="form__input-title">ИНН</h4>
                             <input class="form__input form-control" type="text" name="inn"/>
                         </div>
-                        <div role="tabpanel" class="tab-pane" id="messages">
+                        <div role="tabpanel" class="tab-pane" id="gender-birthday">
                             <h4 class="form__input-title">Пол</h4>
                             <input class="form__input" type="radio" name="sex" value="male" checked/> М</br>
                             <input class="form__input" type="radio" name="sex" value="female"/> Ж</br>
@@ -67,10 +96,10 @@
 
                 <button class="form_button-print btn btn-default" id="previewButton" type="button">Print view</button>
                 <button class="form_button-create btn btn-default" id="createButton" type="reset">Create Person</button>
-                <button class="form_button-save btn btn-default" id="saveButton" type="reset">Save</button>
+                <button class="form_button-save btn btn-default hide" id="saveButton" type="button">Save</button>
             </div>
 
-            <div class="form__show-block" id="display">
+            <div class="form__show-block hide" id="display">
                 <ul class="form__showPrint" id="view"></ul>
                 <button  class="form__showPrint-close btn btn-default" id="closeButton" type="button">x</button>
             </div>

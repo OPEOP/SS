@@ -17,6 +17,8 @@ function Controller () {
         mediator.subscribe('deleteMember', deleteMember);
         //From GroupMemberView
         mediator.subscribe('showPreview', showPreview);
+        //From GroupMemberView
+        mediator.subscribe('restoreTabs', restoreTabs);
     }
 
     function addPerson (person) {
@@ -32,7 +34,7 @@ function Controller () {
     }
 
     function deleteMember (person, li) {
-        groupView.deleteMember(li);
+        groupView.deleteMember(li, person.getId());
         group.removePerson(person.getId());
         document.getElementById('form').reset();
     }
@@ -40,6 +42,12 @@ function Controller () {
     function showPreview (personData) {
         previewView.close();
         previewView.print(personData);
+    }
+
+    function restoreTabs () {
+        Helper.removeClass('active', document.getElementsByClassName('active'));
+        Helper.addClass('active', document.getElementById('FIO'));
+        Helper.addClass('active', document.getElementById('nav-first-tab'));
     }
 
     return this;
